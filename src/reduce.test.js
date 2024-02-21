@@ -6,7 +6,17 @@ describe("reduce", () => {
     function reducer(accumulator, currentItem) {
       return accumulator + currentItem;
     }
-    let sumOfNumbersInArray = reduce(array, reducer);
-    expect(sumOfNumbersInArray).toBe(10);
+    const sumOfNumbersInAnArray = reduce(array, reducer);
+    expect(sumOfNumbersInAnArray).toBe(10);
+  });
+  it("should use initial value as accumulator instead of first element", () => {
+    const array = [1, 2, 3, 4];
+    const initial = 4;
+    function reducer(accumulator, currentItem) {
+      return accumulator + currentItem;
+    }
+
+    const sumOfNumbersInAnArray = reduce(array, reducer, initial);
+    expect(sumOfNumbersInAnArray).toBe(14);
   });
 });
