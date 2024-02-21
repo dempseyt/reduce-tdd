@@ -37,4 +37,13 @@ describe("reduce", () => {
       expect(mockReducer).toHaveBeenCalledTimes(array.length);
     });
   });
+  describe("Given no initial value", () => {
+    it("calls the reducer n-1 times for an array with n elements", () => {
+      const mockReducer = jest.fn();
+      const array = [1, 2, 3, 4];
+
+      reduce(array, mockReducer);
+      expect(mockReducer).toHaveBeenCalledTimes(array.length - 1);
+    });
+  });
 });
