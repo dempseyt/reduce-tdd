@@ -36,6 +36,18 @@ describe("reduce", () => {
       reduce(array, mockReducer, initialValue);
       expect(mockReducer).toHaveBeenCalledTimes(array.length);
     });
+    describe("and an empty array", () => {
+      it("returns the initial value", () => {
+        const array = [];
+        const initialValue = 4;
+        function reducer(accumulator, currentItem) {
+          return accumulator + currentItem;
+        }
+
+        const reducedValue = reduce(array, reducer, initialValue);
+        expect(reducedValue).toEqual(initialValue);
+      });
+    });
   });
   describe("Given no initial value", () => {
     it("calls the reducer n-1 times for an array with n elements", () => {
