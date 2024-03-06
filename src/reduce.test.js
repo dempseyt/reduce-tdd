@@ -28,6 +28,17 @@ describe("reduce", () => {
     reduce(array, reducer, initialValue);
     expect(array).toStrictEqual([1, 2, 3, 4]);
   });
+  it("iterates over elements in the array sequentially", () => {
+    const array = [1, 2, 3];
+    const initialValue = 0;
+    const iterativeOrderArray = [];
+    function reducer(accumulator, currentItem) {
+      iterativeOrderArray.push(currentItem);
+      return accumulator + currentItem;
+    }
+    reduce(array, reducer, initialValue);
+    expect(array).toEqual(iterativeOrderArray);
+  });
   describe("Given an initial value", () => {
     it("calls the reducer once per element in the array", () => {
       const mockReducer = jest.fn();
